@@ -40,5 +40,10 @@
 .answers__item {
   padding: 20px;
   background-color: $babyblue;
-  flex-basis: 20%;
+  flex-basis: 25%;
+  border: 5px solid $white;
+
+  li {
+    display: inline-block;
+  }
 }

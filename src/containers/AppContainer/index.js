@@ -118,7 +118,6 @@ class AppContainer extends React.Component {
    * @param {Object} body json body
    */
   postAnswers (body) {
-    console.log(body);
     const config = {
       method: 'POST',
       headers: new Headers({
@@ -132,12 +131,15 @@ class AppContainer extends React.Component {
     fetch(`${this.apiUrl}answer/evaluate`, config)
       .then(res => res.json()).then(res => {
         console.log(res);
+        // TODO - Figure out why the post is
+        // failing with { error: "Missing parameters" }
       })
       .catch(err => console.log(err));
   }
 
   render () {
-    const { loaded, answers, scenarioId } = this.state;
+    const { loaded, answers, scenarioId, inks } = this.state;
+    console.log(inks);
 
     return (
       <div className="appcontainer">
@@ -151,9 +153,20 @@ class AppContainer extends React.Component {
                     { answers.map((a, index) => (
                       <div className="answers__item" key={ index }>
                         <strong>inks:&nbsp;</strong><br />
-                        <ul>
-                          { a.inks.map((ink, inkIndex) => <li key={ inkIndex }>{ ink }</li>) }
-                        </ul>
+                        <div>
+                          { a.inks.map((inkId, inkIndex) => {
+                            const ink = inks.find(i => i.id === inkId);
+                            return (
+                              <div
+                                className="ink__item"
+                                key={ inkIndex }
+                                style={ { backgroundColor: ink.color } }
+                              >
+                                <span>{ inkId }</span>
+                              </div>
+                            )
+                          }) }
+                        </div>
                       </div>
                     )) }
                   </div>
