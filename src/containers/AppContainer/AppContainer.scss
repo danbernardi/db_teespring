@@ -5,23 +5,40 @@
   flex-wrap: wrap;
 }
 
-.img-item {
-  width: calc(33.3333% - 2rem);
+.inks__group {
   display: flex;
-  overflow: hidden;
-  padding: 1rem;
-  background-color: #FAFAFA;
-  border: 0.1rem solid $dark;
-  position: relative;
-  padding-bottom: 24.024%;
-  margin: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
-  img {
-    min-width: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.ink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 25%;
+  padding: 5px;
+  position: relative;
+}
+
+.ink__color {
+  position: absolute;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.answers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.answers__item {
+  padding: 20px;
+  background-color: $babyblue;
+  flex-basis: 20%;
 }

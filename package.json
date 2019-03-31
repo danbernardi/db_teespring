@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chroma-js": "^2.0.3",
     "connected-react-router": "^6.3.2",
     "gsap": "^2.1.2",
     "history": "^4.7.2",
