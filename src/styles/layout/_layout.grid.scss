@@ -1,0 +1,41 @@
+// basic row element,
+// constrains by max width,
+// adds margin to left and right
+.row {
+  @extend %container;
+  @extend %page-margins;
+  @extend %clearfix;
+  width: 100%;
+  position: relative;
+  clear: both;
+  float: none;
+}
+
+// empty grid element,
+// combine with col-# to use as horizontal grid spacer
+.gridspacer {
+  height: 0.1rem;
+}
+
+// loop through $desktop-columns and define grid classes
+@for $i from 1 through $columns {
+  .col--#{$i} {
+    width: calc(100% * #{$i} / #{$columns} - #{$gutter} * (1 - #{$i} / #{$columns}));
+    float: left;
+    margin-right: #{$gutter};
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+// force element to be last item in grid, removes right gutter
+.col--last { margin-right: 0; }
+
+// center element inside of it's parent, combine with .col-# or max-width
+.col--center {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}

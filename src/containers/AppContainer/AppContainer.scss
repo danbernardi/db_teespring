@@ -1,0 +1,27 @@
+@import '~styles/sass-includes';
+
+.pagecontent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.img-item {
+  width: calc(33.3333% - 2rem);
+  display: flex;
+  overflow: hidden;
+  padding: 1rem;
+  background-color: #FAFAFA;
+  border: 0.1rem solid $dark;
+  position: relative;
+  padding-bottom: 24.024%;
+  margin: 1rem;
+
+  img {
+    min-width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

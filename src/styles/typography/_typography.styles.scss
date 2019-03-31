@@ -1,0 +1,114 @@
+// default font scaling
+html {
+  @include font(regular);
+  font-size: 10px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+// font sizes
+body,
+.typ--default {
+  @include font-size(b1);
+}
+
+h1,
+.typ--h1 {
+  @include font-size(h1);
+}
+
+h2,
+.typ--h2 {
+  @include font-size(h2);
+}
+
+h3,
+.typ--h3 {
+  @include font-size(h3);
+}
+
+h4,
+.typ--h4 {
+  @include font-size(h4);
+}
+
+h5,
+.typ--h5 {
+  @include font-size(h5);
+}
+
+h6,
+.typ--h6 {
+  @include font-size(h6);
+}
+
+.typ--b1 { @include font-size(b1); }
+.typ--b2 { @include font-size(b2); }
+.typ--b3 { @include font-size(b3); }
+
+.typ--caps { text-transform: uppercase; }
+
+.typ--titlecase { text-transform: capitalize; }
+
+.typ--smallcaps {
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
+
+.typ--nowrap {
+  white-space: nowrap;
+}
+
+// font weights
+.typ--light { @include font(light); }
+.typ--regular { @include font(regular); }
+.typ--medium { @include font(medium); }
+.typ--bold { @include font(bold); }
+
+// font modifiers
+
+// basic element styles
+strong { @include font(bold); }
+p { margin-bottom: 1rem; }
+a { text-decoration: none; }
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+sub {
+  @include font(regular);
+  font-size: 0.6em;
+  padding-left: 0.3rem;
+}
+
+blockquote {
+  padding-left: 3rem;
+  border-left: 0.1rem solid $black;
+}
+
+// Text decoration styles
+.typ--underline { text-decoration: underline; }
+.typ--actionable { cursor: pointer; }
+
+.typ--truncate {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+// font alignment
+.typ--center {
+  text-align: center;
+}
+
+.typ--left {
+  text-align: left;
+}
+
+.typ--right {
+  text-align: right;
+}

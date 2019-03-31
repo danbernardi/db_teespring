@@ -1,0 +1,20 @@
+.btn {
+  @include font(bold);
+  @include font-size(b2);
+  color: $white;
+  background-color: $primary;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $greyblue;
+    color: $white;
+  }
+}

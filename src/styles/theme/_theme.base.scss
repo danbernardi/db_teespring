@@ -1,0 +1,39 @@
+// default global body styles
+body {
+  color: $dark;
+  background-color: $white;
+}
+
+// default global link styles
+a,
+.typ--link {
+  color: $primary;
+  transition: color 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: $dark;
+  }
+}
+
+.typ--primary { color: $primary; }
+.typ--dark { color: $dark; }
+.typ--black { color: $black; }
+.typ--white { color: $white; }
+.typ--beige { color: $beige; }
+.typ--babyblue { color: $babyblue; }
+.typ--grey { color: $grey; }
+.typ--greyblue { color: $greyblue; }
+.typ--offwhite { color: $offwhite; }
+
+.bg--primary { background-color: $primary; }
+.bg--dark { background-color: $dark; }
+.bg--black { background-color: $black; }
+.bg--white { background-color: $white; }
+.bg--beige { background-color: $beige; }
+.bg--babyblue { background-color: $babyblue; }
+.bg--grey { background-color: $grey; }
+.bg--greyblue { background-color: $greyblue; }
+.bg--offwhite { background-color: $offwhite; }
+
+.theme--dark { @extend %theme--dark; }
