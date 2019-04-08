@@ -33,6 +33,9 @@ class AppContainer extends React.Component {
       }),
       mode: 'cors'
     };
+    // const c = chroma;
+
+    // debugger;
 
     this.getInks(fetchConfig);
     this.getQuestions(fetchConfig);
@@ -71,7 +74,8 @@ class AppContainer extends React.Component {
 
       // TODO - Fix performance issues. Currently filtering down to
       // a subset of inks due to long processing times for the full array
-      const filteredInks = inks.slice(0, 1000);
+      const filteredInks = inks;
+      // const filteredInks = inks.slice(0, 1000);
 
       const answers = questions.map(q => ({ inks: q.layers.map(l => {
         return this.findCheapestInk(this.findNearestColors(l.color, filteredInks));
@@ -82,6 +86,8 @@ class AppContainer extends React.Component {
         scenario_id: scenarioId,
         answers
       };
+
+      console.log(body);
 
       this.setState({ answers }, () => this.postAnswers(body));
     }
@@ -97,7 +103,7 @@ class AppContainer extends React.Component {
    */
   findNearestColors (color, inks) {
     return inks.filter(ink => {
-      return chroma.distance(ink.color, color) < 20;
+      return chroma.distance(ink.color, color, 'rgb') < 20;
     });
   }
 
@@ -107,10 +113,21 @@ class AppContainer extends React.Component {
    * @param {number} inks[].cost - Number representing cost of ink
    */
   findCheapestInk (inks) {
-    const getCosts = () => inks.map(c => c.cost);
+    // const getCosts = () => inks.map(c => c.cost);
+    // console.log(inks.length);
+    // const minValue = Math.min(...getCosts());
+    // const minCost = inks.find(i => i.cost === minValue);
 
-    const minValue = Math.min(...getCosts());
-    return inks.find(i => i.cost === minValue).id;
+    const minCostItem = inks.reduce((a, b) => b.cost > a.cost ? a : b);
+    console.log(minCostItem);
+
+    // if (minCost === undefined) debugger;
+    if (minCostItem) {
+      return minCostItem.id;
+    } else {
+      // console.log(minCost);
+    }
+
   }
 
   /**
@@ -124,7 +141,7 @@ class AppContainer extends React.Component {
         'Auth-Token': this.authToken,
         'Content-Type': 'application/json'
       }),
-      body,
+      body:JSON.stringify(body),
       mode: 'cors'
     };
 
@@ -139,7 +156,6 @@ class AppContainer extends React.Component {
 
   render () {
     const { loaded, answers, scenarioId, inks } = this.state;
-    console.log(inks);
 
     return (
       <div className="appcontainer">
